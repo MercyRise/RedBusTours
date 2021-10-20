@@ -25,7 +25,7 @@ public class PassengerController {
 
     @GetMapping("/home")
     public String home(Model model){
-        model.addAttribute("passenger", passengerService.getAll());
+        model.addAttribute("passengers", passengerService.getAll());
         return "passengerHome";
     }
 
@@ -58,7 +58,7 @@ public class PassengerController {
     }
 
     @DeleteMapping(value = "/delete/{passengerId}")
-    public boolean delete(@PathVariable String passengerId) {
+    public boolean delete(@PathVariable("passengerId") String passengerId) {
         return passengerService.delete(passengerId);
     }
 

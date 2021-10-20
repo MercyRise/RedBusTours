@@ -20,7 +20,7 @@ public class LocationController {
 
     @GetMapping("/home")
     public String home(Model model) {
-        model.addAttribute("locaitons", service.getAll());
+        model.addAttribute("locations", service.getAll());
         return "locationHome";
     }
 
@@ -50,7 +50,7 @@ public class LocationController {
         return "locationUpdate";
     }
 
-    @PutMapping(value = "/update")
+    @PostMapping(value = "/update")
     public String update(Location location, BindingResult result, Model model) {
         if (result.hasErrors())
             return "locationUpdate";
@@ -59,7 +59,7 @@ public class LocationController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public boolean delete(@PathVariable String id) {
+    public boolean delete(@PathVariable("id") String id) {
         return service.delete(id);
     }
 
